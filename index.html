@@ -12,23 +12,28 @@
     <div class="container">
         <div class="row">
            <div class="col-md-8 mx-auto">
-            <div class="card p-4">
+            <div id="game" class="card p-4">
                 <div class="card-header">
                      <h2>Number Guesser</h2>
                 </div>
-                <div class="card-body">
+                <div id="game" class="card-body">
+                    <form class="form-inline">
+                        <div class="form-group mb-2">
+                            <label for="" class="sr-only">Enter a Number between 
+                                <span class="minNum">1</span> 
+                                and 
+                                <span class="maxNum">10</span>
+                            </label>
+                            <input type="number" class="form-control" name="guess" id="guessInput" placeholder="Enter your guess">
+                        </div>
+                        <button id="guessValue" type="submit" class="btn btn-warning mb-2">Submit</button>
+                        <div id="message" class="alert"></div>
+                    </form>
                 </div>
-                <form class="form-inline">
-                    <div class="form-group mb-2">
-                        <label for="" class="sr-only">Enter a Number between 1 and 10</label>
-                        <input type="number" class="form-control" name="guess" id="guess">
-                    </div>
-                    <button type="submit" class="btn btn-warning mb-2">Submit</button>
-                </form>
             </div>
            </div>
         </div>
     </div>
-    
 </body>
+<script src="app.js"></script>
 </html>
