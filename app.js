@@ -9,7 +9,7 @@
 // Games values
 let min = 1, 
     max = 10,
-    winningNum = 2,
+    winningNum,
     guessesLeft = 3;
 
 // UI Elements
@@ -31,20 +31,33 @@ game.addEventListener('submit', getInputValue);
 
 function getInputValue(e) {
 
-  let guess = parseInt(guessInput.value); 
+   const winningNum = Math.floor(Math.random()*max);
 
+   console.log(winningNum);
+  
+    let guess = parseInt(guessInput.value); 
+
+   //Reset message 
   setMessage(null, null)
 
    //   Validation
-   if (guess === NaN || guess < min || guess > max) {
+   if (isNaN(guess) || guess < min || guess > max) {
     setMessage(`Your guess is outside the games Min and Max range of
                     ${min} and ${max}, please try again`, 
                     'alert-danger')
-   }else{
-    console.log('guess fine');
    }
-
-  console.log(guess);
+   else if(guess === winningNum){
+    setMessage(`Your guess of ${guess} was correct!!`, 
+                    'alert-success')
+   }else if(guessesLeft) {
+    setMessage(`Your guess of ${guess} was incorrect, you have ${guessesLeft} guesses left`, 
+                    'alert-warning')
+    guessesLeft = guessesLeft - 1; 
+    console.log(guessesLeft);
+   }else{
+    setMessage(`You've run out of guesses :(`, 
+                    'alert-secondary')
+   }
 
   e.preventDefault(); 
 }
